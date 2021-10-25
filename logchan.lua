@@ -7,9 +7,6 @@
 -- the terms of the MIT license. See LICENSE for details.
 --
 
--- Required when using testy.
---~ package.path = package.path .. ';./?.lua'
-
 -- Feel free to replace with your own class implementation.
 local function Class()
     local cls = {}
