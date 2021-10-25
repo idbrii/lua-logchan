@@ -12,9 +12,9 @@ local function Class()
     local cls = {}
     cls.__index = cls
     setmetatable(cls, {
-            __call = function(...)
+            __call = function(cls_, ...)
                 local obj = setmetatable({}, cls)
-                obj.new(...)
+                obj:new(...)
                 return obj
             end
         })
@@ -158,6 +158,10 @@ local function test_dot_syntax()
     log:disable_channel("Rendering")
     log.ch.Audio:print("Loud noises")
     log.ch.Rendering:print("Invisible")
+    log:disable_all()
+    log.ch.Audio:print("Inaudible")
+    log.ch.Rendering:print("Invisible")
+    log.ch.NewChan:print("Unprinted")
 end
 
 -- }}}
