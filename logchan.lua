@@ -8,23 +8,24 @@
 --
 
 -- Feel free to replace with your own class implementation.
+local class_mt = {
+    __call = function(cls, ...)
+        local obj = setmetatable({}, cls)
+        obj:ctor(...)
+        return obj
+    end
+}
 local function Class()
     local cls = {}
     cls.__index = cls
-    setmetatable(cls, {
-            __call = function(cls_, ...)
-                local obj = setmetatable({}, cls)
-                obj:new(...)
-                return obj
-            end
-        })
+    setmetatable(cls, class_mt)
     return cls
 end
 
 
 local Channel = Class()
 
-function Channel:new(name)
+function Channel:ctor(name)
     self.label = ("[%s]"):format(name)
 end
 
@@ -47,7 +48,7 @@ void_channel.printf = noop
 
 local LogChan = Class()
 
-function LogChan:new()
+function LogChan:ctor()
     self.auto_enable = true
 
     local autoget_mt = {
