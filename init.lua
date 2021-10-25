@@ -4,7 +4,10 @@ local Class = require "classic"
 
 local Channel = Class:extend()
 
-function Channel:new(name)
+function Channel:new(owner, name)
+	self.disable = function(_self)
+		owner:disable_channel(name)
+	end
 	self.label = ("[%s]"):format(name)
 end
 function Channel:print(...)
@@ -20,19 +23,31 @@ local function noop() end
 local void_channel = Channel("Void")
 void_channel.print = noop
 void_channel.printf = noop
+void_channel.disable = noop
+
+
 
 local LogChan = Class:extend()
 
 function LogChan:new()
 	self.channels = {}
 	self.auto_enable = true
+
+	local autoget_mt = {
+		__index = function(t, key)
+			assert(type(key) == 'string', key)
+			return self:_get_or_create_channel(key)
+		end,
+	}
+	self.ch = {}
+	setmetatable(self.ch, autoget_mt)
 end
 
 function LogChan:_get_or_create_channel(chan_name)
 	local ch = self.channels[chan_name]
 	if not ch then
 		if self.auto_enable then
-			ch = Channel(chan_name)
+			ch = Channel(self, chan_name)
 		else
 			ch = void_channel
 		end
@@ -101,6 +116,16 @@ local function test_disable_all_enable_one()
 	lc:enable_channel("Audio")
 	lc:print("Audio", "Loud noises")
 	lc:print("Rendering", "Invisible")
+end
+
+local function test_dot_syntax()
+	local lc = LogChan()
+	print()
+	lc.ch.Audio:print("Audible")
+	lc.ch.Rendering:print("Visible")
+	lc.ch.Rendering:disable()
+	lc.ch.Audio:print("Loud noises")
+	lc.ch.Rendering:print("Invisible")
 end
 
 -- }}}
