@@ -92,40 +92,40 @@ end
 -- Test with testy.lua {{{
 
 local function test_multiple_channels()
-	local lc = LogChan()
+	local log = LogChan()
 	print()
-	lc:print("Audio", "Can you hear this?")
-	lc:printf("Camera", "Look %s", "left")
+	log:print("Audio", "Can you hear this?")
+	log:printf("Camera", "Look %s", "left")
 end
 
 local function test_disable_all()
-	local lc = LogChan()
+	local log = LogChan()
 	print()
-	lc:print("Audio", "Audible")
-	lc:disable_all()
-	lc:print("Audio", "Inaudible")
-	lc:print("NewChan", "Invisible")
+	log:print("Audio", "Audible")
+	log:disable_all()
+	log:print("Audio", "Inaudible")
+	log:print("NewChan", "Invisible")
 end
 
 local function test_disable_all_enable_one()
-	local lc = LogChan()
+	local log = LogChan()
 	print()
-	lc:print("Audio", "Audible")
-	lc:print("Rendering", "Visible")
-	lc:disable_all()
-	lc:enable_channel("Audio")
-	lc:print("Audio", "Loud noises")
-	lc:print("Rendering", "Invisible")
+	log:print("Audio", "Audible")
+	log:print("Rendering", "Visible")
+	log:disable_all()
+	log:enable_channel("Audio")
+	log:print("Audio", "Loud noises")
+	log:print("Rendering", "Invisible")
 end
 
 local function test_dot_syntax()
-	local lc = LogChan()
+	local log = LogChan()
 	print()
-	lc.ch.Audio:print("Audible")
-	lc.ch.Rendering:print("Visible")
-	lc.ch.Rendering:disable()
-	lc.ch.Audio:print("Loud noises")
-	lc.ch.Rendering:print("Invisible")
+	log.ch.Audio:print("Audible")
+	log.ch.Rendering:print("Visible")
+	log.ch.Rendering:disable()
+	log.ch.Audio:print("Loud noises")
+	log.ch.Rendering:print("Invisible")
 end
 
 -- }}}
