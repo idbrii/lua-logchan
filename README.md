@@ -12,9 +12,9 @@ table directly `log.ch.Audio:print("Noises")`.
 
 ## Multiple Channels and Format Print
 
-	local log = LogChan()
-	log:print("Audio", "Can you hear this?")
-	log:printf("Camera", "Look %s and %s for %0.2f s", "left", "right", 10.5)
+    local log = LogChan()
+    log:print("Audio", "Can you hear this?")
+    log:printf("Camera", "Look %s and %s for %0.2f s", "left", "right", 10.5)
 
 ### Output
 
@@ -24,13 +24,13 @@ table directly `log.ch.Audio:print("Noises")`.
 
 ## Disable All
 
-	local log = LogChan()
-	-- new channels are enabled by default
-	log:print("Audio", "Audible")
-	log:disable_all()
-	log:print("Audio", "Inaudible")
-	-- after disable all, new channels default to disabled
-	log:print("NewChan", "Invisible")
+    local log = LogChan()
+    -- new channels are enabled by default
+    log:print("Audio", "Audible")
+    log:disable_all()
+    log:print("Audio", "Inaudible")
+    -- after disable all, new channels default to disabled
+    log:print("NewChan", "Invisible")
 
 ### Output
 
@@ -39,13 +39,13 @@ table directly `log.ch.Audio:print("Noises")`.
 
 ## Dot Syntax
 
-	local log = LogChan()
-	log.ch.Audio:print("Audible")
-	log.ch.Rendering:print("Visible")
-	-- dot syntax is only for printing, not toggling.
-	log:disable_channel("Rendering")
-	log.ch.Audio:print("Loud noises")
-	log.ch.Rendering:print("Invisible")
+    local log = LogChan()
+    log.ch.Audio:print("Audible")
+    log.ch.Rendering:print("Visible")
+    -- dot syntax is only for printing, not toggling.
+    log:disable_channel("Rendering")
+    log.ch.Audio:print("Loud noises")
+    log.ch.Rendering:print("Invisible")
 
 ### Output
 
@@ -56,17 +56,17 @@ table directly `log.ch.Audio:print("Noises")`.
 
 ## Configure and Use
 
-	local log = LogChan()
-	log:disable_all()
-	log:enable_channel("Audio")
-	log:enable_channel("Camera")
-	log:print("Audio", "Loud noises")
-	log:print("Rendering", "Invisible")
-	log:printf("Camera", "Look %s and %s for %0.2f s", "left", "right", 10.5)
-	-- Or dot syntax.
-	log.ch.Audio:print("Loud noises")
-	log.ch.Rendering:print("Invisible")
-	log.ch.Camera:printf("Look %s and %s for %0.2f s", "left", "right", 10.5)
+    local log = LogChan()
+    log:disable_all()
+    log:enable_channel("Audio")
+    log:enable_channel("Camera")
+    log:print("Audio", "Loud noises")
+    log:print("Rendering", "Invisible")
+    log:printf("Camera", "Look %s and %s for %0.2f s", "left", "right", 10.5)
+    -- Or dot syntax.
+    log.ch.Audio:print("Loud noises")
+    log.ch.Rendering:print("Invisible")
+    log.ch.Camera:printf("Look %s and %s for %0.2f s", "left", "right", 10.5)
 
 ### Output
 
