@@ -7,6 +7,8 @@
 -- the terms of the MIT license. See LICENSE for details.
 --
 
+-- Required when using testy.
+--~ package.path = package.path .. ';./?.lua'
 
 local Class = require "classic"
 
@@ -121,6 +123,21 @@ local function test_disable_all_enable_one()
 	log:print("Audio", "Loud noises")
 	log:print("Rendering", "Invisible")
 end
+
+local function test_preconfigure()
+	local log = LogChan()
+	print()
+	log:disable_all()
+	log:enable_channel("Audio")
+	log:enable_channel("Camera")
+	log:print("Audio", "Loud noises")
+	log:print("Rendering", "Invisible")
+	log:printf("Camera", "Look %s", "left")
+	log.ch.Audio:print("Loud noises")
+	log.ch.Rendering:print("Invisible")
+	log.ch.Camera:printf("Look %s", "left")
+end
+
 
 local function test_dot_syntax()
 	local log = LogChan()

@@ -37,28 +37,12 @@ table directly `log.ch.Audio:print("Noises")`.
     [Audio]	Audible
 
 
-## Disable All and Enable One
-
-	local log = LogChan()
-	log:print("Audio", "Audible")
-	log:print("Rendering", "Visible")
-	log:disable_all()
-	log:enable_channel("Audio")
-	log:print("Audio", "Loud noises")
-	log:print("Rendering", "Invisible")
-
-### Output
-
-    [Audio]	Audible
-    [Rendering]	Visible
-    [Audio]	Loud noises
-
-
 ## Dot Syntax
 
 	local log = LogChan()
 	log.ch.Audio:print("Audible")
 	log.ch.Rendering:print("Visible")
+	-- dot syntax is only for printing, not toggling.
 	log:disable_channel("Rendering")
 	log.ch.Audio:print("Loud noises")
 	log.ch.Rendering:print("Invisible")
@@ -68,6 +52,28 @@ table directly `log.ch.Audio:print("Noises")`.
     [Audio]	Audible
     [Rendering]	Visible
     [Audio]	Loud noises
+
+
+## Configure and Use
+
+	local log = LogChan()
+	log:disable_all()
+	log:enable_channel("Audio")
+	log:enable_channel("Camera")
+	log:print("Audio", "Loud noises")
+	log:print("Rendering", "Invisible")
+	log:printf("Camera", "Look %s", "left")
+	-- Or dot syntax.
+	log.ch.Audio:print("Loud noises")
+	log.ch.Rendering:print("Invisible")
+	log.ch.Camera:printf("Look %s", "left")
+
+### Output
+
+    [Audio]	Loud noises
+    [Camera]	Look left
+    [Audio]	Loud noises
+    [Camera]	Look left
 
 
 # License
