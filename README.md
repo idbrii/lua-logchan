@@ -10,34 +10,64 @@ table directly `log.ch.Audio:print("Noises")`.
 
 # Examples
 
-    -- write logs
-	local log = LogChan()
-	log:print("Audio", "Can you hear this?")   [Audio]	Can you hear this?
-	log:printf("Camera", "Look %s", "left")    [Camera]	Look left
+## Multiple Channels and Format Print
 
-    -- disable_all
 	local log = LogChan()
-	log:print("Audio", "Audible")              [Audio]	Audible
+	log:print("Audio", "Can you hear this?")
+	log:printf("Camera", "Look %s", "left")
+
+### Output
+
+    [Audio]	Can you hear this?
+    [Camera]	Look left
+
+
+## Disable All
+
+	local log = LogChan()
+	-- new channels are enabled by default
+	log:print("Audio", "Audible")
 	log:disable_all()
 	log:print("Audio", "Inaudible")
+	-- after disable all, new channels default to disabled
 	log:print("NewChan", "Invisible")
 
-    -- disable_all and enable one
+### Output
+
+    [Audio]	Audible
+
+
+## Disable All and Enable One
+
 	local log = LogChan()
-	log:print("Audio", "Audible")              [Audio]	Audible
-	log:print("Rendering", "Visible")          [Rendering]	Visible
+	log:print("Audio", "Audible")
+	log:print("Rendering", "Visible")
 	log:disable_all()
 	log:enable_channel("Audio")
-	log:print("Audio", "Loud noises")          [Audio]	Loud noises
+	log:print("Audio", "Loud noises")
 	log:print("Rendering", "Invisible")
 
-    -- dot syntax
+### Output
+
+    [Audio]	Audible
+    [Rendering]	Visible
+    [Audio]	Loud noises
+
+
+## Dot Syntax
+
 	local log = LogChan()
-	log.ch.Audio:print("Audible")              [Audio]	Audible
-	log.ch.Rendering:print("Visible")          [Rendering]	Visible
+	log.ch.Audio:print("Audible")
+	log.ch.Rendering:print("Visible")
 	log:disable_channel("Rendering")
-	log.ch.Audio:print("Loud noises")          [Audio]	Loud noises
+	log.ch.Audio:print("Loud noises")
 	log.ch.Rendering:print("Invisible")
+
+### Output
+
+    [Audio]	Audible
+    [Rendering]	Visible
+    [Audio]	Loud noises
 
 
 # License
