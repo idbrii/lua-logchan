@@ -7,6 +7,10 @@ will. Create the logger instance `local log = LogChan()` and then either pass
 channel names as an argument `log:print("Audio", "Loud")` or index the `ch`
 table directly `log.ch.Audio:print("Noises")`.
 
+Games often have different systems and you're not always interested in all the
+systems at once. Using channels allows you to always have your logging setup,
+but only see what's currently interesting.
+
 
 # Examples
 
