@@ -1,4 +1,12 @@
-package.path = package.path .. ';./?.lua'
+--
+-- logchan -- print channeled logs
+--
+-- Copyright (c) 2021, David Briscoe
+--
+-- This module is free software; you can redistribute it and/or modify it under
+-- the terms of the MIT license. See LICENSE for details.
+--
+
 
 local Class = require "classic"
 
