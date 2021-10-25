@@ -14,12 +14,12 @@ table directly `log.ch.Audio:print("Noises")`.
 
 	local log = LogChan()
 	log:print("Audio", "Can you hear this?")
-	log:printf("Camera", "Look %s", "left")
+	log:printf("Camera", "Look %s and %s for %0.2f s", "left", "right", 10.5)
 
 ### Output
 
     [Audio]	Can you hear this?
-    [Camera]	Look left
+    [Camera]	Look left and right for 10.50 s
 
 
 ## Disable All
@@ -62,18 +62,18 @@ table directly `log.ch.Audio:print("Noises")`.
 	log:enable_channel("Camera")
 	log:print("Audio", "Loud noises")
 	log:print("Rendering", "Invisible")
-	log:printf("Camera", "Look %s", "left")
+	log:printf("Camera", "Look %s and %s for %0.2f s", "left", "right", 10.5)
 	-- Or dot syntax.
 	log.ch.Audio:print("Loud noises")
 	log.ch.Rendering:print("Invisible")
-	log.ch.Camera:printf("Look %s", "left")
+	log.ch.Camera:printf("Look %s and %s for %0.2f s", "left", "right", 10.5)
 
 ### Output
 
     [Audio]	Loud noises
-    [Camera]	Look left
+    [Camera]	Look left and right for 10.50 s
     [Audio]	Loud noises
-    [Camera]	Look left
+    [Camera]	Look left and right for 10.50 s
 
 
 # License

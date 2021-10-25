@@ -101,7 +101,7 @@ local function test_multiple_channels()
 	local log = LogChan()
 	print()
 	log:print("Audio", "Can you hear this?")
-	log:printf("Camera", "Look %s", "left")
+	log:printf("Camera", "Look %s and %s for %0.2f s", "left", "right", 10.5)
 end
 
 local function test_disable_all()
