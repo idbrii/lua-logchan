@@ -76,6 +76,12 @@ table directly `log.ch.Audio:print("Noises")`.
     [Camera]	Look left and right for 10.50 s
 
 
+# Requirements
+
+Bundles rxi/classic (MIT) to provide oop, but usage is very basic. Replace with
+your own class library trivially.
+
+
 # License
 
 Redistribute/modify under the terms of the MIT license. See LICENSE for
