@@ -10,14 +10,27 @@
 -- Required when using testy.
 --~ package.path = package.path .. ';./?.lua'
 
-local Class = require "classic"
+-- Feel free to replace with your own class implementation.
+local function Class()
+	local cls = {}
+	cls.__index = cls
+	setmetatable(cls, {
+			__call = function(...)
+				local obj = setmetatable({}, cls)
+				obj.new(...)
+				return obj
+			end
+		})
+	return cls
+end
 
 
-local Channel = Class:extend()
+local Channel = Class()
 
 function Channel:new(name)
 	self.label = ("[%s]"):format(name)
 end
+
 function Channel:print(...)
 	print(self.label, ...)
 end
@@ -25,6 +38,7 @@ end
 function Channel:printf(fmt, ...)
 	print(self.label, fmt:format(...))
 end
+
 
 local function noop() end
 
@@ -34,7 +48,7 @@ void_channel.printf = noop
 
 
 
-local LogChan = Class:extend()
+local LogChan = Class()
 
 function LogChan:new()
 	self.auto_enable = true

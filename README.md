@@ -78,8 +78,8 @@ table directly `log.ch.Audio:print("Noises")`.
 
 # Requirements
 
-Bundles rxi/classic (MIT) to provide oop, but usage is very basic. Replace with
-your own class library trivially.
+Bundles a basic class implmentation. Replace with your own class library
+trivially.
 
 
 # License
